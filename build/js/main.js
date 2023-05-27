@@ -1,10 +1,7 @@
 "use strict";
-let username = "instructor";
-console.log("username", username);
-let a = 10;
-let b = "10";
-let c = false;
-// Can use tsc NoEmitOnError -w to watch for errors
-// Can use tsc --init to create a tsconfig.json file
-// Can use tsc -w to watch for changes
-// Can use tsc -w --outDir to watch for changes and output to a specific directory
+let a = 5, b = "6", c = true, d = "hello";
+let e = 5;
+let f;
+let reg = /hello/;
+const sum = (a, b) => a + b;
+console.log(sum(a, b));

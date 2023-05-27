@@ -1,10 +1,14 @@
-let username = "instructor";
-console.log("username", username);
-let a: number = 10;
-let b: string = "10";
-let c: boolean = false;
+let a: number = 5,
+  b: string = "6",
+  c: boolean = true,
+  d: any = "hello";
 
-// Can use tsc NoEmitOnError -w to watch for errors
-// Can use tsc --init to create a tsconfig.json file
-// Can use tsc -w to watch for changes
-// Can use tsc -w --outDir to watch for changes and output to a specific directory
+let e: number | string = 5;
+
+let f: number[] | string[];
+
+let reg: RegExp = /hello/;
+
+const sum = (a: number, b: string) => a + b;
+
+console.log(sum(a, b));
