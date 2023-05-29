@@ -1,70 +1,35 @@
-//Functions
+//Type Assertions or Type Casting
+type one = string;
+type two = string | number;
+type three = "Hello";
 
-//Type alias
+// Convert to more or less specific
 
-type StringOrNumber = string | number;
+let a: one = "Hello";
+let b = a as two;
+let c = b as three;
 
-type StringOrNumberArray = (string | number)[];
+let d = <one>"World";
+let e = <string | number>1;
 
-type Guitarists = {
-  name: string;
-  active?: boolean; //? means optional property
-  albums: StringOrNumberArray;
+const AddORConcat = (
+  a: number,
+  b: number,
+  c: "Add" | "Concat"
+): number | string => {
+  if (c === "Add") return a + b;
+  return "" + a + b;
 };
 
-type UserId = StringOrNumber;
+let myVal: string = AddORConcat(10, 10, "Concat") as string;
+console.log(myVal);
 
-//Literal types
-let user: "Tayyab";
+//Type sees it as string but it is a number
+let nextVal: number = AddORConcat(10, 10, "Concat") as number;
+console.log(nextVal);
 
-// user = 'Wahab' //Error because user can only be Tayyab as it is a literal type
-
-let userName: "Tayyab" | "Amtul" | "Wahab";
-
-userName = "Amtul"; //No error because userName can be any of the three values
-
-//Functions
-
-let sum = (a: number, b: number): number => a + b;
-
-console.log(sum(1, 2));
-
-type MathFunction = (a: number, b: number) => number;
-
-let multiply: MathFunction = function (a: number, b: number): number {
-  return a * b;
-};
-
-console.log(multiply(2, 3));
-
-//Optional parameters
-
-let AddAll = (a: number, b: number, c?: number): number => {
-  if (typeof c !== "undefined") {
-    return a + b + c;
-  }
-  return a + b;
-};
-
-//Rest Parameters
-
-let total = (a: number = 10, b: number = 2, ...num: number[]): number => {
-  return a + b + num.reduce((prev, curr) => prev + curr);
-};
-
-console.log(total(13, 41, 5, 51, 12));
-
-//Never Type
-
-let errMsg = (errMsg: string) => {
-  throw new Error(errMsg);
-};
-
-let infiniteLoop = () => {
-  let i: number = 1;
-  while (true) {
-    i++;
-    if (i > 100) break; // Come out from loop
-  }
-  return;
-};
+//The Dom
+// let img = document.querySelector("img")!;
+// img.src;
+// let myImg = document.getElementById("#img") as HTMLImageElement;
+// myImg.src;
